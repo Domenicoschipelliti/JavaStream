@@ -8,9 +8,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("--------------------PRIMO------------------");
         Product clienteA=new Product("Libro","Baby",23);
         Product clienteB=new Product("Il Ritratto di Dorian Grey","Books",55);
-        Product clienteC=new Product("Acciaio","Adventure",1000);
+        Product clienteC=new Product("Acciaio","Boys",1000);
         Product clienteD=new Product("DragonHeart","Books",100000);
         List<Product>client =new ArrayList<>();
         client.add(clienteA);
@@ -22,6 +23,7 @@ public class Main {
             System.out.println("questi sono i prezzi maggiori di cento "+ n.getName() +" "+n.getPrice() +" Euro"+" e fa parte della categoria "+n.getCategory());
         });
 
+        System.out.println("--------------------SECONDO------------------");
 
         Order ordine=new Order(client,"Baby");
         Order order=new Order(client,"Fantasy");
@@ -37,6 +39,11 @@ public class Main {
             System.out.println("questi sono della categoria  "+ n.getStatus() + n.getProducts());
         });
 
+        System.out.println("------------TERZO---------------------");
+        client.stream().filter(n->n.getCategory().equals("Boys")).forEach(n->{
+            n.setPrice(n.getPrice()*10/100);
+            System.out.println("questi sono i libri con categoria "+ n.getCategory()+" chiamati "+ n.getName() +" con lo sconto "+n.getPrice()+" euro");
+        });
 
 
 
